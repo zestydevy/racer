@@ -7,7 +7,6 @@
 class TActor
 {
     public:
-
     TActor();
     ~TActor(){};
 
@@ -18,9 +17,10 @@ class TActor
 
     void loadModel(char const * file);
 
-    void draw();
+    virtual void update();
+    virtual void draw();
 
-    private:
+    protected:
 
     VecFx32 mPosition;
     VecFx32 mScale;

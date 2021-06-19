@@ -37,7 +37,7 @@ LLIBRARIES      =   libg3d_demo.a
 
 SUBDIRS	= 
 
-SRCS		=	main.cpp actor.cpp game.cpp
+SRCS		=	main.cpp actor.cpp game.cpp kart.cpp gamepad.cpp
 TARGET_NEF	=	main.nef
 TARGET_BIN	=	main.srl
 

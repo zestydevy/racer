@@ -1,5 +1,7 @@
 #include "game.hpp"
 #include "actor.hpp"
+#include "kart.hpp"
+#include "gamepad.hpp"
 
 #include "g3d_demolib.h"
 
@@ -8,6 +10,8 @@ G3DDemoCamera sCamera;
 static TActor * sPlayer;
 static TActor * sCourse;
 static TActor * sSky;
+
+static TGamepad * sGamepad;
 
 void TGame::init()
 {
@@ -29,7 +33,8 @@ void TGame::init()
     // and sets to the default manager.
     NNS_GfdInitFrmPlttVramManager(0x8000, TRUE);
 
-    sPlayer = new TActor;
+    sGamepad = new TGamepad;
+    sPlayer = new TKart(sGamepad);
     sCourse = new TActor;
     sSky = new TActor;
 
@@ -70,6 +75,12 @@ void TGame::draw()
     G3X_ResetMtxStack();
 
     setCamera(&sCamera);
+
+    //update input
+    sGamepad->ReadGamePad();
+
+    //update actors
+    sPlayer->update();
 
     // draw actors
     sPlayer->draw();

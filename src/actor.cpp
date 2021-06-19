@@ -29,6 +29,10 @@ void TActor::loadModel(char const * file)
     NNS_G3dRenderObjInit(&mRenderObj, mModel);
 }
 
+void TActor::update()
+{
+}
+
 void TActor::draw()
 {
     NNS_G3dGlbSetBaseScale(&mScale);
