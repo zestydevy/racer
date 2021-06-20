@@ -76,7 +76,7 @@ void TGame::draw()
     G3DDemo_PrintApplyToHW();
 
     G3X_Reset();
-    G3X_ResetMtxStack();
+    //G3X_ResetMtxStack(); //Called by G3X_Reset
 
     // camera
     sCamera->update();

@@ -65,9 +65,9 @@ void TCamera::calc(){
 	mLookAt.camPos.y = sinx * mDistance >> FX32_SHIFT;
 	mLookAt.camPos.z = cosx * mDistance >> FX32_SHIFT;
 
-	mLookAt.camPos.x = (mTarget->getPosition().x * 0x1000) + mLookAt.camPos.x * siny >> FX32_SHIFT;
-	mLookAt.camPos.y = (mTarget->getPosition().y * 0x1000) + mLookAt.camPos.y;
-	mLookAt.camPos.z = (mTarget->getPosition().z * 0x1000) + mLookAt.camPos.z * cosy >> FX32_SHIFT;
+	mLookAt.camPos.x = (mTarget->getPosition().x) + (mLookAt.camPos.x * siny >> FX32_SHIFT);
+	mLookAt.camPos.y = (mTarget->getPosition().y) + (mLookAt.camPos.y);
+	mLookAt.camPos.z = (mTarget->getPosition().z) + (mLookAt.camPos.z * cosy >> FX32_SHIFT);
 
     mLookAt.camUp.x =  FX_Mul( sinz, cosy );
     mLookAt.camUp.y =  cosz;
