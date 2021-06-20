@@ -29,10 +29,18 @@ void TActor::loadModel(char const * file)
     NNS_G3dRenderObjInit(&mRenderObj, mModel);
 }
 
+void TActor::update()
+{
+}
+
 void TActor::draw()
 {
+    MtxFx33 identity;
+    MTX_Identity33(&identity);
+
     NNS_G3dGlbSetBaseScale(&mScale);
     NNS_G3dGlbSetBaseTrans(&mPosition);
+    NNS_G3dGlbSetBaseRot(&identity);
     NNS_G3dGlbFlushP();
     NNS_G3dDraw(&mRenderObj);
 }
