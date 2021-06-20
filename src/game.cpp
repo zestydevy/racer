@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include "actor.hpp"
+#include "array.hpp"
 
 #include "g3d_demolib.h"
 
@@ -8,6 +9,8 @@ G3DDemoCamera sCamera;
 static TActor * sPlayer;
 static TActor * sCourse;
 static TActor * sSky;
+
+static TArray<TActor *> sActorList;
 
 void TGame::init()
 {
@@ -32,6 +35,10 @@ void TGame::init()
     sPlayer = new TActor;
     sCourse = new TActor;
     sSky = new TActor;
+
+    sActorList.push(sPlayer);
+    sActorList.push(sCourse);
+    sActorList.push(sSky);
 
     sSky->setScale(FX32_ONE*200, FX32_ONE*200, FX32_ONE*200);
     sCourse->setScale(FX32_ONE*400, FX32_ONE*400, FX32_ONE*400);
@@ -72,9 +79,9 @@ void TGame::draw()
     setCamera(&sCamera);
 
     // draw actors
-    sPlayer->draw();
-    sCourse->draw();
-    sSky->draw();
+    for (u32 i = 0; i < sActorList.size(); ++i) {
+        sActorList[i]->draw();
+    }
 
     // restore translation and scale
     VecFx32 trans = {0,0,0};
