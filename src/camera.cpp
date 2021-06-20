@@ -34,8 +34,11 @@ TCamera::TCamera(fx32 yoffset, fx32 dist){
 void TCamera::update(){
     if (mTarget != NULL){
         mLookAt.target.x = mTarget->getPosition().x;
-        mLookAt.target.y = mTarget->getPosition().y;
+        mLookAt.target.y = mTarget->getPosition().y + mHeightOffset;
         mLookAt.target.z = mTarget->getPosition().z;
+
+        mLookAt.target.z += 8 * FX32_ONE * FX_CosIdx((u16)mTarget->getFacingDirection()) >> FX32_SHIFT;
+        mLookAt.target.x += 8 * FX32_ONE * FX_SinIdx((u16)mTarget->getFacingDirection()) >> FX32_SHIFT;
 
         if (mMode == CAMERAMODE_FORWARD){
             mAngleY = (s16)(mTarget->getDirection() + 0x8000);

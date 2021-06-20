@@ -14,6 +14,8 @@ class TKart : public TActor
     virtual void draw();
 
     s16 getDirection(){ return mDirection; }
+    s16 getFacingDirection(){ return mDirection - mVisibleDirection; }
+    fx32 getSpeed(){ return mSpeed; }
 
     protected:
     TGamepad * mGamepad; 

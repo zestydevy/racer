@@ -36,7 +36,7 @@ void TGame::init()
     // and sets to the default manager.
     NNS_GfdInitFrmPlttVramManager(0x8000, TRUE);
 
-    sCamera = new TCamera(24*FX32_ONE, 32*FX32_ONE);
+    sCamera = new TCamera(14*FX32_ONE, 36*FX32_ONE);
     sGamepad = new TGamepad;
     sPlayer = new TKart(sGamepad);
     sCourse = new TActor;

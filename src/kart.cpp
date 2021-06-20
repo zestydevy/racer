@@ -50,7 +50,7 @@ void TKart::update()
     if (mGamepad->checkPressed(PAD_BRAKE) && mPosition.y <= getGroundHeight()){
         if (mGamepad->checkHeld(PAD_STEER_LEFT | PAD_STEER_RIGHT) && mSpeed >= MIN_DRIFT_SPEED) {    //if steering while pressing brake, start drift
             mDrifting = true;
-            mDriftDirection = mGamepad->checkHeld(PAD_KEY_RIGHT);
+            mDriftDirection = mGamepad->checkHeld(PAD_STEER_RIGHT);
         }
         mVSpeed = GRAVITY * 5;
     }
