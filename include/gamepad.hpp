@@ -7,13 +7,12 @@ class TGamepad
         mCurrentInput = 0;
         mPreviousInput = 0;
     };
-    ~TGamepad(){};
 
-    virtual void ReadGamePad(void);
-    u16 GetCurrentInput(void);
-    bool CheckPressed(u16);
-    bool CheckHeld(u16);
-    bool CheckReleased(u16);
+    virtual void readGamePad(void);
+    u16 getCurrentInput(void);
+    bool checkPressed(u16);
+    bool checkHeld(u16);
+    bool checkReleased(u16);
 
     protected:
     u16 mCurrentInput;
@@ -31,5 +30,5 @@ class TVirtualGamepad : public TGamepad
     };
     ~TVirtualGamepad(){};
 
-    virtual void ReadGamePad(void);
+    virtual void readGamePad(void);
 };

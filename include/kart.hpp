@@ -7,19 +7,23 @@
 class TKart : public TActor
 {
     public:
-    TKart(TGamepad * gamepad) : TActor(){ mGamepad = gamepad; };
+    TKart(TGamepad * gamepad);
     ~TKart(){};
 
     virtual void update();
     virtual void draw();
+
+    s16 getDirection(){ return mDirection; }
 
     protected:
     TGamepad * mGamepad; 
 
     fx32 mMaxSpeed;
     fx32 mAccel;
-    fx32 mTurnRate;
+    s16 mTurnRate;
 
     fx32 mSpeed;
-    fx32 mRotation;
+    s16 mDirection;
+
+    s16 mSteer;
 };
