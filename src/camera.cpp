@@ -27,8 +27,6 @@ TCamera::TCamera(fx32 yoffset, fx32 dist){
 	mDistance = dist;
 
     mMode = CAMERAMODE_FORWARD;
-
-	calc();
 }
 
 void TCamera::update(){

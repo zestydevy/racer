@@ -115,7 +115,9 @@ void TArray<T>::shrink() {
     begin[i] = mBegin[i];
   }
 
-  delete[] mBegin;
+  if (mBegin != NULL) {
+      delete[] mBegin;
+    }
   mBegin = begin;
   mCap = mEnd = (mBegin + n);
 }
@@ -167,7 +169,9 @@ TArray<T>::insert(T const * it, T const & v, u32 n) {
       begin[a + i] = v;
     }
 
-    delete[] mBegin;
+    if (mBegin != NULL) {
+      delete[] mBegin;
+    }
     mBegin = begin;
     mEnd = (mBegin + new_size);
     mCap = (mBegin + new_size);

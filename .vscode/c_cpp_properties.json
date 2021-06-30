@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${default}",
+                "C:\\ds-dev\\NitroSystem\\simple\\include",
+                "C:\\ds-dev\\NitroSystem\\include",
+                "C:\\ds-dev\\NitroSystem\\include\\nnsys",
+                "C:\\ds-dev\\NitroSDK\\include",
+                "C:\\ds-dev\\NitroSystem\\build\\demos\\g3d\\demolib\\include"
+
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "_LANGUAGE_C_PLUS_PLUS=1"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

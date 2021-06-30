@@ -3,6 +3,26 @@
 
 #include "game.hpp"
 
+void * operator new(u32 size)
+{
+    return NNS_FndAllocFromExpHeapEx(G3DDemo_AppHeap, size, 32);
+}
+ 
+void operator delete(void * p)
+{
+    NNS_FndFreeToExpHeap(G3DDemo_AppHeap, p);    
+}
+
+void * operator new[](u32 size)
+{
+    return NNS_FndAllocFromExpHeapEx(G3DDemo_AppHeap, size, 32);
+}
+ 
+void operator delete[](void * p)
+{
+    NNS_FndFreeToExpHeap(G3DDemo_AppHeap, p);    
+}
+
 static void bootGame()
 {
     TGame game;
@@ -13,23 +33,10 @@ static void bootGame()
 }
 
 extern "C" void NitroMain(void)
-{
-    void   *heapStart;
-    void   *nstart;
-    OSHeapHandle handle;
-
-    OS_Init();
-    nstart = OS_InitAlloc(OS_ARENA_MAIN, OS_GetMainArenaLo(), OS_GetMainArenaHi(), 2);
-    OS_SetMainArenaLo(nstart);
-
-    //---- Allocate region for heap from arena
-    heapStart = OS_AllocFromMainArenaLo(0x4000, 32);
-
-    //---- Create heap
-    handle = OS_CreateHeap(OS_ARENA_MAIN, heapStart, (void *)((u32)heapStart + 0x4000));
-
-    //---- Set current heap
-    (void)OS_SetCurrentHeap(OS_ARENA_MAIN, handle);
+{  
+    G3DDemo_InitSystem();
+    G3DDemo_InitMemory();
+    G3DDemo_InitVRAM();
     
     bootGame();
 }
